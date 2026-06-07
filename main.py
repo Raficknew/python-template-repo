@@ -7,6 +7,7 @@ import sys
 
 from logic.kalkulator import oblicz, BladDzieleniaPrzezZero, BladNieznanejOperacji
 
+
 def zbuduj_parser() -> argparse.ArgumentParser:
     """Tworzy i zwraca parser argumentów CLI."""
     parser = argparse.ArgumentParser(

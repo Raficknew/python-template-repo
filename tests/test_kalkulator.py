@@ -75,12 +75,15 @@ class TestDzielenie:
 
 
 class TestOblicz:
-    @pytest.mark.parametrize("a, op, b, oczekiwany", [
-        (2,  "+", 3,  5),
-        (10, "-", 4,  6),
-        (3,  "*", 4,  12),
-        (10, "/", 2,  5),
-    ])
+    @pytest.mark.parametrize(
+        "a, op, b, oczekiwany",
+        [
+            (2, "+", 3, 5),
+            (10, "-", 4, 6),
+            (3, "*", 4, 12),
+            (10, "/", 2, 5),
+        ],
+    )
     def test_wszystkie_operacje(self, a, op, b, oczekiwany):
         assert oblicz(a, op, b) == pytest.approx(oczekiwany)
 
