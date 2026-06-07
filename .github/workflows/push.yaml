@@ -26,9 +26,15 @@ jobs:
 
       - name: Format check
         run: bash scripts/format.sh --check
+        env:
+          PATH: ${{ github.workspace }}/.venv/bin:${{ env.PATH }}
 
       - name: Lint
         run: bash scripts/lint.sh
+        env:
+          PATH: ${{ github.workspace }}/.venv/bin:${{ env.PATH }}
 
       - name: Test
         run: bash scripts/test.sh
+        env:
+          PATH: ${{ github.workspace }}/.venv/bin:${{ env.PATH }}
