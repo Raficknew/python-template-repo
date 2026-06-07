@@ -1,0 +1,41 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.pylint.main]
+# Dodaj katalog główny do ścieżki, żeby pylint widział moduły tak jak pytest
+init-hook = "import sys; sys.path.insert(0, '.')"
+ignore-paths = ["^\\..*", "^.*__pycache__.*$"]
+
+[tool.pylint.format]
+# Musi być równy line-length z black, żeby nie było konfliktów
+max-line-length = 88
+
+[tool.pylint.messages_control]
+disable = [
+    # black sam formatuje — pylint nie powinien z tym walczyć
+    "C0301",  # line-too-long         (pilnuje black)
+    "C0303",  # trailing-whitespace   (pilnuje black)
+    "C0304",  # missing-final-newline (pilnuje black)
+    "C0305",  # trailing-newlines     (pilnuje black)
+    # styl importów zostawiamy black
+    "C0411",  # wrong-import-order
+    "C0412",  # ungrouped-imports
+    "C0413",  # wrong-import-position
+    # docstringi w testach są zbędne — nazwa metody wystarczy
+    "C0115",  # missing-class-docstring    (tylko w tests/)
+    "C0116",  # missing-function-docstring (tylko w tests/)
+]
+
+[tool.pylint.design]
+max-args = 6        # domyślne 5 bywa zbyt restrykcyjne
+max-returns = 4
+max-branches = 12
+
+[tool.pylint.similarities]
+min-similarity-lines = 6  # krótsze bloki to najczęściej boilerplate testów
+ignore-imports = true

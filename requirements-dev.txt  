@@ -1,0 +1,12 @@
+# Zależności developerskie
+# Instalacja: pip install -r requirements-dev.txt
+
+# Testy
+pytest>=7.4
+pytest-cov>=4.1      # opcjonalnie: raport pokrycia (scripts/test.sh -c)
+
+# Formatowanie
+black>=24.0
+
+# Analiza statyczna
+pylint>=3.0
